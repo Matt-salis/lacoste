@@ -26,7 +26,7 @@
       <div class="w-80 bg-black"></div>
     </div>
 
-    <div v-if="!isFocused" id="secondNav" style="z-index: -10; transition: top 0.7s;" class="w-full h-[48px] bg-[#002d18] items-center justify-center px-5 hidden md:flex relative px-10" >
+    <div v-if="!isFocused" id="secondNav" style="z-index: -10; transition: top 0.7s;" class="w-full bg-[#002d18] items-center justify-center hidden md:flex flex-wrap relative px-10 py-2" >
       <div class="flex justify-around w-1/2">
         <a  :class="{ 'link': true, 'fade-out': isFocused }" class="hidden md:block mr-2 transition ease-in-out delay-50 duration-300 font-medium text-gray-400 hover:text-white font-sans link" href="">NEW IN</a>
         <a  :class="{ 'link': true, 'fade-out': isFocused }" class="hidden md:block mr-2 transition ease-in-out delay-50 duration-300 font-medium text-gray-400 hover:text-white font-sans link" href="">CLOTHING</a>
@@ -53,15 +53,32 @@
 
   </header>
   <body id="top" class="w-[100vw] overflow-clip">
+    
+    
+    <!-- 3d LOGO -->
+    <div class="spin-container">
+      <div class="spinning-object">
+        <!-- Front Image -->
+        <img src="https://i.pinimg.com/originals/3e/61/85/3e618566c193683b5db603932abae87f.png" alt="Front Image" class="front-image">
+
+        <!-- Curved images for 3D effect -->
+        <img src="https://i.pinimg.com/originals/3e/61/85/3e618566c193683b5db603932abae87f.png" alt="Middle Layer" class="middle-image">
+        <img src="https://i.pinimg.com/originals/3e/61/85/3e618566c193683b5db603932abae87f.png" alt="Back Layer" class="back-image">
+      </div>
+    </div>
+    <!-- end 3d LOGO -->
+     
     <div class="w-full h-[128px] bg-[#002d18]"></div>
-    <video id="myVideo" class="border-none border-transparent border-0" autoplay muted playsinline>
+    <video style="z-index: 100;" id="myVideo" class="border-none border-transparent border-0 relative" autoplay muted playsinline>
       <source src="./assets/lacoste-landing-heritage-home-video.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
-    <div class="w-full h-[205px] py-10 relative z-10 bg-white overflow-hidden">
+    <div class="w-full h-[205px] py-10 relative z-10 bg-white overflow-hidden" style="z-index: 50;">
       <p class="text-center font-sans font-extrabold text-xs scale-y-90 m-5">LACOSTE STORY</p>
       <p class="text-center font-serif font-medium text-xl md:text-6xl scale-150">90 YEARS OF STYLE</p>
     </div>
+
+
     <div class="scroll-container w-[100vw] overflow-clip">
       <div class="text-container w-[100vw]">
         <p class="scrolling-text font-serif font-light scale-x-125 text-[#002d18]">RENÉ LACOSTE</p>
@@ -70,7 +87,7 @@
     
     <div class="w-full absolute top-[200vh] md:top-[200vh] overflow-clip">
       
-      <div class="h-[878px] z-10 w-full bg-[#0e210b] overflow-hidden flex items-center justify-center">
+      <div class="h-[878px] w-full bg-[#0e210b] overflow-hidden flex items-center justify-center" style="z-index: -5;">
         <div>
           <p class="text-white text-center font-sans font-extrabold text-sm scale-x-125">The champion turned inventor</p>
           <p class="text-white text-center font-serif font-medium text-xl md:text-7xl scale-150 m-16">RENÉ LACOSTE,<br> THE ORIGINAL <br> CROCODILE</p>
@@ -79,7 +96,7 @@
       </div>
 
 
-      <video id="myVideo" class="w-full border-none border-transparent border-0" autoplay muted playsinline loop>
+      <video style="z-index: 50;" id="myVideo" class="w-full border-none border-transparent border-0 relative" autoplay muted playsinline loop>
         <source src="./assets/lacoste-landing-heritage-chapter1-zoom1-1.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
@@ -124,11 +141,13 @@
 
       </div>
 
-      <video id="myVideo" class="border-none border-transparent border-0 z-20" autoplay muted playsinline loop>
+      <video id="myVideo" class="border-none border-transparent border-0 relative z-20" autoplay muted playsinline loop>
         <source src="./assets/lacoste-landing-heritage-chapter1.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
     </div> <!--absolute div -->
+
+
   </body>
 </template>
 
@@ -187,124 +206,191 @@ window.onscroll = function() {
   }
 
   #delete {
-  justify-content: center;
-  width: 20px; /* add this */
-  height: 20px;
-  background-color: #000; /* add this */
-  border-radius: 50%; /* add this */
-  padding: 0.1em; /* add this */
-  color: #fff; /* add this */
-}
-
-.coolButton {
-  background-color: #fff;
-  border: 1px solid #002d18;
-  border-radius: 50px;
-  padding: 10px 20px;
-  font-size: 16px;
-  font-weight: bold;
-  color: #0a2516;
-  cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
-  position: relative;
-  overflow: hidden;
-}
-
-.coolButton::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 100%;
-  background-color: #002d18;
-  border-radius: 50px;
-  transition: width 0.15s ease-in-out;
-  z-index: -1;
-}
-
-.coolButton:hover {
-  background-color: transparent;
-  color: #fff;
-}
-
-.coolButton:hover::before {
-  width: 100%;
-}
-.scroll-container {
-  position: relative;
-  margin-top: -40vh;
-  height: 200vh;
-}
-.text-container {
-  z-index: -10;
-  position: sticky;
-  top: 0;
-  animation: scroll-reveal linear forwards;
-  animation-timeline: view(80% 0%);
-}
-.scrolling-text {
-  text-wrap: nowrap;
-  top: 0%; /* Center vertically */
-  left: 50%;
-  font-size: 600px;
-  font-weight: bold;
-  animation-range: contain
-}
-
-
-
-@keyframes scroll-reveal {
-  from {
-    translate: 500vw;
+    justify-content: center;
+    width: 20px; /* add this */
+    height: 20px;
+    background-color: #000; /* add this */
+    border-radius: 50%; /* add this */
+    padding: 0.1em; /* add this */
+    color: #fff; /* add this */
   }
-  to {
-    translate: -520vw;
-  }
-}
-@keyframes scroll-reveal2 {
-  from {
-    transform: translateX(1500%);
-  }
-  to {
-    transform: translateX(-1500%);
-  }
-}
 
-.fotoContainer .fotoItem {
-  animation: fotoScroll linear forwards;
-  animation-timeline: view(0% 70%);
-}
-.fotoItem {
-  animation-range: contain
-}
-
-@keyframes fotoScroll {
-  from {
-    transform: translateY(0);
+  .coolButton {
+    background-color: #fff;
+    border: 1px solid #002d18;
+    border-radius: 50px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #0a2516;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    position: relative;
+    overflow: hidden;
   }
-  to {
-    transform: translateY(50%);
+
+  .coolButton::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: #002d18;
+    border-radius: 50px;
+    transition: width 0.15s ease-in-out;
+    z-index: -1;
   }
-}
 
+  .coolButton:hover {
+    background-color: transparent;
+    color: #fff;
+  }
 
-@media only screen and (max-width: 768px) {
-  /* styles here will only be applied on small devices */
+  .coolButton:hover::before {
+    width: 100%;
+  }
+  .scroll-container {
+    position: relative;
+    margin-top: -40vh;
+    height: 200vh;
+  }
   .text-container {
-    animation: scroll-reveal2 linear forwards;
-    animation-timeline: view(70% 0%);
+    z-index: -10;
+    position: sticky;
+    top: 0;
+    animation: scroll-reveal linear forwards;
+    animation-timeline: view(80% 0%);
+  }
+  .scrolling-text {
+    text-wrap: nowrap;
+    top: 0%; /* Center vertically */
+    left: 50%;
+    font-size: 600px;
+    font-weight: bold;
+    animation-range: contain
+  }
+
+
+
+  @keyframes scroll-reveal {
+    from {
+      translate: 500vw;
+    }
+    to {
+      translate: -520vw;
+    }
+  }
+  @keyframes scroll-reveal2 {
+    from {
+      transform: translateX(1500%);
+    }
+    to {
+      transform: translateX(-1500%);
+    }
   }
 
   .fotoContainer .fotoItem {
-    animation: none;
-    animation-timeline: none;
+    animation: fotoScroll linear forwards;
+    animation-timeline: view(0% 70%);
   }
   .fotoItem {
-    animation-range: none
+    animation-range: contain
   }
+
+  @keyframes fotoScroll {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(50%);
+    }
+  }
+
+
+  @media only screen and (max-width: 768px) {
+    /* styles here will only be applied on small devices */
+    .text-container {
+      animation: scroll-reveal2 linear forwards;
+      animation-timeline: view(70% 0%);
+    }
+
+    .fotoContainer .fotoItem {
+      animation: none;
+      animation-timeline: none;
+    }
+    .fotoItem {
+      animation-range: none
+    }
+  }
+
+  /* 3d logo animation */
+    .spin-container {
+      position: fixed; /* Fix the container in the middle of the screen */
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%); /* Center the container */
+      width: 200px;
+      height: 200px;
+      perspective: 1000px; /* For 3D perspective */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: visible;
+      z-index: 20;
+  }
+
+  .spinning-object {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      /* Scroll-based animation using animation-timeline */
+      animation: spin linear forwards;
+      animation-timeline: scroll();
+  }
+
+  .front-image, .middle-image, .back-image {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      position: absolute;
+      animation-range: contain;
+      top: 0;
+      left: 0;
+
+  }
+
+  .middle-image {
+      transform: rotateX(5deg) translateZ(4px); /* Middle layer slightly rotated */
+  }
+
+  .back-image {
+      transform: rotateX(10deg) translateZ(7px); /* Back layer further rotated */
+  }
+
+  .scroll-content {
+      padding: 20px;
+      color: #333;
+      text-align: center;
+      margin-top: 100vh; /* Push content down to simulate scrolling */
+  }
+
+  p {
+      font-size: 1.5rem;
+  }
+
+  @keyframes spin {
+      0% {
+          transform: rotateX(0deg);
+      }
+      100% {
+          transform: rotateX(calc(-4 * 360deg));
+      }
+  }
+
   
-}
+
 
 </style>
 
