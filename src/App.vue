@@ -1,5 +1,6 @@
 <template class="w-[100vw] overflow-hidden">
   <header class="w-[100vw] overflow-clip fixed top-0" style="z-index: 150;">
+
     <div class="px-5 md:px-10 w-full h-[80px] bg-[#002d18] flex gap-5 items-center">
       <a href="#top"><img class="mx-5 cursor-pointer" src="./assets/lacoste-logo.png" width="48" height="22" alt="Logo lacoste"></a>
       <a  :class="{ 'link': true, 'fade-out': isFocused }" class="hidden md:block ml-2 mr-2 transition ease-in-out delay-50 duration-300 font-medium text-gray-400 hover:text-white font-sans link" href="">MEN</a>
@@ -7,6 +8,7 @@
       <a  :class="{ 'link': true, 'fade-out': isFocused }" class="hidden md:block mr-2 transition ease-in-out delay-50 duration-300 font-medium text-gray-400 hover:text-white font-sans link" href="">KIDS</a>
       <a  :class="{ 'link': true, 'fade-out': isFocused }" class="hidden md:block mr-2 transition ease-in-out delay-50 duration-300 font-medium text-lime-700 hover:text-lime-500 font-sans link" href="">SALE</a>
       <a  :class="{ 'link': true, 'fade-out': isFocused }" class="hidden md:block mr-2 transition ease-in-out delay-50 duration-300 font-medium text-gray-400 hover:text-white font-sans link" href="">DISCOVER</a>
+      
       <div :class="{ 'w-full': isFocused, 'w-2/3 lg:w-1/2': !isFocused }" 
         class="transition-all duration-300 ml-2 h-[60%] 
         bg-white items-center overflow-hidden px-2 relative
@@ -20,8 +22,24 @@
           placeholder="Find a product">
         <span v-if="isFocused" @click="clearInput" id="delete" class="absolute right-2 flex items-center justify-center text-white cursor-pointer">X</span>
       </div>
+      
       <div class="w-80 bg-black"></div>
     </div>
+
+    <div v-if="!isFocused" id="secondNav" style="z-index: -10; transition: top 0.7s;" class="w-full h-[48px] bg-[#002d18] items-center justify-center px-5 hidden md:flex relative px-10" >
+      <div class="flex justify-around w-1/2">
+        <a  :class="{ 'link': true, 'fade-out': isFocused }" class="hidden md:block mr-2 transition ease-in-out delay-50 duration-300 font-medium text-gray-400 hover:text-white font-sans link" href="">NEW IN</a>
+        <a  :class="{ 'link': true, 'fade-out': isFocused }" class="hidden md:block mr-2 transition ease-in-out delay-50 duration-300 font-medium text-gray-400 hover:text-white font-sans link" href="">CLOTHING</a>
+        <a  :class="{ 'link': true, 'fade-out': isFocused }" class="hidden md:block mr-2 transition ease-in-out delay-50 duration-300 font-medium text-gray-400 hover:text-white font-sans link" href="">SHOES</a>
+        <a  :class="{ 'link': true, 'fade-out': isFocused }" class="hidden md:block mr-2 transition ease-in-out delay-50 duration-300 font-medium text-gray-400 hover:text-white font-sans link" href="">BAGS & LEATHER GOODS</a>
+        <a  :class="{ 'link': true, 'fade-out': isFocused }" class="hidden md:block mr-2 transition ease-in-out delay-50 duration-300 font-medium text-gray-400 hover:text-white font-sans link" href="">ACCESORIES</a>
+        <a  :class="{ 'link': true, 'fade-out': isFocused }" class="hidden md:block mr-2 transition ease-in-out delay-50 duration-300 font-medium text-gray-400 hover:text-white font-sans link" href="">SPORT</a>
+        <a  :class="{ 'link': true, 'fade-out': isFocused }" class="hidden md:block mr-2 transition ease-in-out delay-50 duration-300 font-medium text-gray-400 hover:text-white font-sans link" href="">UNDERWEAR</a>
+        <a  :class="{ 'link': true, 'fade-out': isFocused }" class="hidden md:block mr-2 transition ease-in-out delay-50 duration-300 font-medium text-gray-400 hover:text-white font-sans link" href="">SALE</a>
+      </div>
+    </div>
+    <div v-else id="secondNav"></div>
+
     <div id="searchBarMobile" style="z-index: -10; transition: top 0.7s;" class="w-full border h-[48px] bg-white items-center flex md:hidden relative px-10">
       <img src="./assets/lupa.png" width="22" height="auto" alt="">
       <input 
@@ -32,9 +50,10 @@
         placeholder="Find a product">
       <span v-if="isFocused" @click="clearInput" id="delete" class="flex items-center justify-center text-white cursor-pointer">X</span>
     </div>
+
   </header>
   <body id="top" class="w-[100vw] overflow-clip">
-    <div class="w-full h-[128px] md:h-[80px]"></div>
+    <div class="w-full h-[128px] bg-[#002d18]"></div>
     <video id="myVideo" class="border-none border-transparent border-0" autoplay muted playsinline>
       <source src="./assets/lacoste-landing-heritage-home-video.mp4" type="video/mp4">
       Your browser does not support the video tag.
@@ -142,8 +161,10 @@ window.onscroll = function() {
   var currentScrollPos = window.pageYOffset;
   if (prevScrollpos > currentScrollPos) {
     document.getElementById("searchBarMobile").style.top = "0";
+    document.getElementById("secondNav").style.top = "0";
   } else {
     document.getElementById("searchBarMobile").style.top = "-50px";
+    document.getElementById("secondNav").style.top = "-50px";
   }
   prevScrollpos = currentScrollPos;
 }
