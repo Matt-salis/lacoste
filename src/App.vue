@@ -77,7 +77,7 @@
       </div>
 
 
-      <div class="w-full flex flex-wrap gap-5 m-none md:m-24 fotoContainer">
+      <div class="w-full flex flex-wrap gap-5 justify-around fotoContainer">
         
         <div class="w-full md:w-1/3 block md:sticky top-0 fotoItem">
           <img src="./assets/lacoste-croc.png" class="w-full md:w-[488]"  alt="">
@@ -282,7 +282,7 @@ window.onscroll = function() {
   .fotoItem {
     animation-range: none
   }
-
+  
 }
 
 </style>
