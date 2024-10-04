@@ -23,11 +23,16 @@
         <span v-if="isFocused" @click="clearInput" id="delete" class="absolute right-2 flex items-center justify-center text-white cursor-pointer">X</span>
       </div>
       
-      <div class="w-80 bg-black"></div>
+      <div class="w-40 ml-auto md:w-80 h-full flex justify-around items-center">
+        <img class="h-5 filter invert cursor-pointer" src="./assets/facebook.png" alt="">
+        <img class="h-5 filter invert cursor-pointer" src="./assets/instagram.png" alt="">
+        <img class="h-5 filter invert cursor-pointer" src="./assets/social.png" alt="">
+        <img class="h-5 filter invert cursor-pointer" src="./assets/telegram.png" alt="">
+      </div>
     </div>
 
-    <div v-if="!isFocused" id="secondNav" style="z-index: -10; transition: top 0.7s;" class="w-full bg-[#002d18] items-center justify-center hidden md:flex flex-wrap relative px-10 py-2" >
-      <div class="flex justify-around w-1/2">
+    <div v-if="!isFocused" id="secondNav" style="z-index: -10; transition: top 0.7s;" class="w-full bg-[#002d18] items-center justify-center hidden md:flex flex-wrap relative py-2" >
+      <div class="flex justify-around w-3/4 min-[1416px]:w-1/2">
         <a  :class="{ 'link': true, 'fade-out': isFocused }" class="hidden md:block mr-2 transition ease-in-out delay-50 duration-300 font-medium text-gray-400 hover:text-white font-sans link" href="">NEW IN</a>
         <a  :class="{ 'link': true, 'fade-out': isFocused }" class="hidden md:block mr-2 transition ease-in-out delay-50 duration-300 font-medium text-gray-400 hover:text-white font-sans link" href="">CLOTHING</a>
         <a  :class="{ 'link': true, 'fade-out': isFocused }" class="hidden md:block mr-2 transition ease-in-out delay-50 duration-300 font-medium text-gray-400 hover:text-white font-sans link" href="">SHOES</a>
@@ -68,7 +73,8 @@
     </div>
     <!-- end 3d LOGO -->
      
-    <div class="w-full h-[128px] bg-[#002d18]"></div>
+    <div class="w-full h-[128px] bg-[#002d18] block md:hidden"></div>
+
     <video style="z-index: 100;" id="myVideo" class="border-none border-transparent border-0 relative" autoplay muted playsinline>
       <source src="./assets/lacoste-landing-heritage-home-video.mp4" type="video/mp4">
       Your browser does not support the video tag.
@@ -178,12 +184,13 @@ export default {
 var prevScrollpos = window.pageYOffset;
 window.onscroll = function() {
   var currentScrollPos = window.pageYOffset;
+  var secondNav = document.getElementById("secondNav");
   if (prevScrollpos > currentScrollPos) {
     document.getElementById("searchBarMobile").style.top = "0";
-    document.getElementById("secondNav").style.top = "0";
+    secondNav.style.top = "0";
   } else {
     document.getElementById("searchBarMobile").style.top = "-50px";
-    document.getElementById("secondNav").style.top = "-50px";
+    secondNav.style.top = ((secondNav.offsetHeight * -1)+'px');
   }
   prevScrollpos = currentScrollPos;
 }
